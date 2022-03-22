@@ -34,6 +34,22 @@ public class StudentController {
         return new ResponseEntity<Student>(responseStudent, HttpStatus.CREATED);
     }
 
+
+    @PutMapping("students")
+    public ResponseEntity<?> updateStudent(@RequestBody Student student, @PathVariable Long id) {
+        Student responseStudent = studentService.updateStudent(student, id);
+        return new ResponseEntity<Student>(responseStudent, HttpStatus.OK);
+    }
+
+
+    @DeleteMapping("students")
+    public ResponseEntity<?> deleteStudent(@RequestBody Student student, @PathVariable Long id) {
+        Student responseStudent = studentService.deleteStudent(id);
+        return new ResponseEntity<Student>(responseStudent, HttpStatus.OK);
+    }
+
+
+
     @PostMapping("students/{firstName}/{lastName}/{email}")
     public ResponseEntity<?> saveStudentPath(@PathVariable String firstName, @PathVariable String lastName, @PathVariable String email) {
         Student student = Student.builder()

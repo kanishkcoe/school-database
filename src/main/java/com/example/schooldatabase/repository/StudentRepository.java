@@ -16,4 +16,10 @@ public interface StudentRepository extends JpaRepository<Student, Long>{
 
     @Query(value = "SELECT student FROM Student student WHERE student.address.city = ?1 AND student.address.pincode = ?2")
     List<Student> dhundoCitykeNaamSe(String city, String pincode);
+
+    @Query(value = "UPDATE Student student SET student = :student WHERE student.id = :id")
+    Student update(Student student, Long id);
+
+    @Query(value = "DELETE FROM Student student WHERE student.id = :id")
+    Student delete(Long id);
 }

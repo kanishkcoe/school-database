@@ -28,4 +28,14 @@ public class StudentServiceImpl implements StudentService{
     public Optional<Student> getStudentById(Long id) {
         return studentRepository.findById(id);
     }
+
+    @Override
+    public Student updateStudent(Student student, Long id) {
+        return this.studentRepository.update(student, id);
+    }
+
+    @Override
+    public Student deleteStudent(Long id) {
+        return this.studentRepository.delete(id);
+    }
 }
